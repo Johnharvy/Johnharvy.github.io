@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>CentOs下相关指令记录 | 沁心小筑</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在服务器操作系统CentOs下相关指令记录。 Node.js启动路由文件首先你需要安装forever工具来启动（forever可以避免服务器重启自启动路由的问题），指令如下1$  npm i forever -g 启动：1$  forever start 路由文件 停止：1$  forever stop 路由文件 重启：1$  forever restart 路由文件 Mysql通过mysql.s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOs下相关指令记录">
+<meta property="og:url" content="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/07/CentOs下相关命令记录/index.html">
+<meta property="og:site_name" content="沁心小筑">
+<meta property="og:description" content="在服务器操作系统CentOs下相关指令记录。 Node.js启动路由文件首先你需要安装forever工具来启动（forever可以避免服务器重启自启动路由的问题），指令如下1$  npm i forever -g 启动：1$  forever start 路由文件 停止：1$  forever stop 路由文件 重启：1$  forever restart 路由文件 Mysql通过mysql.s">
+<meta property="og:updated_time" content="2017-09-07T07:22:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CentOs下相关指令记录">
+<meta name="twitter:description" content="在服务器操作系统CentOs下相关指令记录。 Node.js启动路由文件首先你需要安装forever工具来启动（forever可以避免服务器重启自启动路由的问题），指令如下1$  npm i forever -g 启动：1$  forever start 路由文件 停止：1$  forever stop 路由文件 重启：1$  forever restart 路由文件 Mysql通过mysql.s">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <!--头部内容模板-->
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">沁心小筑</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">列表</a>
+        
+       
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="https://github.com/Johnharvy" title="github"></a>
+        
+        <a id="1" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/Johnharvy/Johnharvy.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CentOs下相关命令记录" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/07/CentOs下相关命令记录/" class="article-date">
+  <time datetime="2017-09-07T07:22:10.000Z" itemprop="datePublished">2017-09-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CentOs下相关指令记录
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在服务器操作系统CentOs下相关指令记录。</p>
+<h2 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h2><h3 id="启动路由文件"><a href="#启动路由文件" class="headerlink" title="启动路由文件"></a>启动路由文件</h3><p>首先你需要安装forever工具来启动（forever可以避免服务器重启自启动路由的问题），指令如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  npm i forever -g</div></pre></td></tr></table></figure></p>
+<p>启动：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  forever start 路由文件</div></pre></td></tr></table></figure></p>
+<p>停止：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  forever stop 路由文件</div></pre></td></tr></table></figure></p>
+<p>重启：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  forever restart 路由文件</div></pre></td></tr></table></figure></p>
+<h3 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a>Mysql</h3><p>通过mysql.server脚本来运行/关闭<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  service mysqld  start/stop</div></pre></td></tr></table></figure></p>
+<p>输入密码进入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$   mysql -uroot -p</div></pre></td></tr></table></figure></p>
+<p>重启服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  /etc/init.d/mysql restart</div></pre></td></tr></table></figure></p>
+<h3 id="系统常用指令"><a href="#系统常用指令" class="headerlink" title="系统常用指令"></a>系统常用指令</h3><p>查看硬盘和分区<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ rm  <span class="comment">#删除文件</span></div><div class="line">$ mkdir <span class="comment">#新建目录</span></div><div class="line">$ touch <span class="comment">#新建文件</span></div><div class="line">$ <span class="built_in">kill</span> <span class="comment">#可以杀死某个正在进行或者已经是dest状态的进程</span></div><div class="line">$ cat <span class="comment">#打印文件内容，cat &gt; 1.c可以将copy的代码等内容复制到1.c中，ctrl+d保存， 通过gcc -o 1 1.c 将1.c编译成.exe文件</span></div><div class="line">$ df -h</div><div class="line">$ fdisk -l</div><div class="line">$ du -sh   <span class="comment">#查看当前目录占用空间大小</span></div><div class="line">$ du /etc -sh   <span class="comment">#查看/etc目录占用空间大小</span></div></pre></td></tr></table></figure></p>
+<p>More info: <a href="http://www.cnblogs.com/qq78292959/archive/2013/03/06/2946587.html" target="_blank" rel="external">get more…</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/07/CentOs下相关命令记录/" data-id="cj7a56l380000ed7ru4xpugim" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/07/cookie-js/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          cookie.js
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/07/Hexo/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hexo</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/07/cookie-js/">cookie.js</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/07/CentOs下相关命令记录/">CentOs下相关指令记录</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/07/Hexo/">Hexo</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Johnharvy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">列表</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
