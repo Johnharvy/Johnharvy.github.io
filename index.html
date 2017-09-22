@@ -84,14 +84,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
-<p>Mac上配置本地服务器解析运行python文件其实比较方便，因为Mac本身就自带了apache来支持启动本地服务器。我们需要修改下apache的配置文件，大致有以下几个逻辑：</p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Mac上配置本地服务器解析运行python文件其实比较方便，因为Mac本身就自带了apache来支持启动本地服务器。我们需要修改下apache的配置文件，大致有以下几个逻辑：</p>
 <ul>
 <li>加入apache识别的.py文件类型</li>
 <li>规定服务器寻找程序文件的地址</li>
 <li>放开识别请求的权限</li>
 </ul>
-</blockquote>
 <h3 id="配置文件位置"><a href="#配置文件位置" class="headerlink" title="配置文件位置"></a>配置文件位置</h3><p>你可以在finder应用下前往文件位置 :<br>    /etc/apache2<br>找到httpd.conf即是我们要找的配置文件</p>
 <h3 id="检查文件里规定的基地址"><a href="#检查文件里规定的基地址" class="headerlink" title="检查文件里规定的基地址"></a>检查文件里规定的基地址</h3><p>查找<em>DocumentRoot</em>，其后面的地址字符串就是该服务器规定默认的基地址，你在该文件下的文件都可以通过 localhost/文件名.类型访问到，细心的你会发现如果此时打开.py文件不能运行，只会展现内容。</p>
 <h3 id="识别-py文件"><a href="#识别-py文件" class="headerlink" title="识别.py文件"></a>识别.py文件</h3><p>查找 <em>AddHandler</em>，在其后面加入 .pl .py .sh</p>
@@ -107,7 +105,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/22/Mac上配置apache支持运行解析pytho文件/" data-id="cj7v91pp20000737rswarjm4z" class="article-share-link">Share</a>
+      <a data-url="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/22/Mac上配置apache支持运行解析pytho文件/" data-id="cj7v95n8s0001a47r95abrbb2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -154,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/07/cookie-js/" data-id="cj7v91ppg0003737rcx50ebyl" class="article-share-link">Share</a>
+      <a data-url="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/07/cookie-js/" data-id="cj7v95n8v0003a47r9ewziw2t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -200,7 +198,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/07/CentOs下相关命令记录/" data-id="cj7v91pp60001737rifxfd5q4" class="article-share-link">Share</a>
+      <a data-url="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/07/CentOs下相关命令记录/" data-id="cj7v95n8o0000a47rd2qfu87q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -245,7 +243,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/07/Hexo/" data-id="cj7v91pp80002737r9j2yrsec" class="article-share-link">Share</a>
+      <a data-url="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/07/Hexo/" data-id="cj7v95n8u0002a47regm9pdow" class="article-share-link">Share</a>
       
       
     </footer>
