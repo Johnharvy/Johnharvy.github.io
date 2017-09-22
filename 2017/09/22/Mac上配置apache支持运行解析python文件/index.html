@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/22/Mac上配置apache支持运行解析python文件/index.html">
 <meta property="og:site_name" content="沁心小筑">
 <meta property="og:description" content="简介Mac上配置本地服务器解析运行python文件其实比较方便，因为Mac本身就自带了apache来支持启动本地服务器。我们需要修改下apache的配置文件，大致有以下几个逻辑：  加入apache识别的.py文件类型 规定服务器寻找程序文件的地址 放开识别请求的权限  配置文件位置你可以在finder应用下前往文件位置 :    /etc/apache2找到httpd.conf即是我们要找的配置">
-<meta property="og:updated_time" content="2017-09-22T02:15:56.000Z">
+<meta property="og:updated_time" content="2017-09-22T02:21:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac上配置apache支持运行解析python文件">
 <meta name="twitter:description" content="简介Mac上配置本地服务器解析运行python文件其实比较方便，因为Mac本身就自带了apache来支持启动本地服务器。我们需要修改下apache的配置文件，大致有以下几个逻辑：  加入apache识别的.py文件类型 规定服务器寻找程序文件的地址 放开识别请求的权限  配置文件位置你可以在finder应用下前往文件位置 :    /etc/apache2找到httpd.conf即是我们要找的配置">
@@ -95,8 +95,20 @@
 <h3 id="配置文件位置"><a href="#配置文件位置" class="headerlink" title="配置文件位置"></a>配置文件位置</h3><p>你可以在finder应用下前往文件位置 :<br>    /etc/apache2<br>找到httpd.conf即是我们要找的配置文件</p>
 <h3 id="检查文件里规定的基地址"><a href="#检查文件里规定的基地址" class="headerlink" title="检查文件里规定的基地址"></a>检查文件里规定的基地址</h3><p>查找<em>DocumentRoot</em>，其后面的地址字符串就是该服务器规定默认的基地址，你在该文件下的文件都可以通过 localhost/文件名.类型访问到，细心的你会发现如果此时打开.py文件不能运行，只会展现内容。</p>
 <h3 id="识别-py文件"><a href="#识别-py文件" class="headerlink" title="识别.py文件"></a>识别.py文件</h3><p>查找 <em>AddHandler</em>，在其后面加入 .pl .py .sh</p>
-<h3 id="设置你程序工作的目录位置，并放开权限"><a href="#设置你程序工作的目录位置，并放开权限" class="headerlink" title="设置你程序工作的目录位置，并放开权限"></a>设置你程序工作的目录位置，并放开权限</h3><p>找到<br>    <directory "="" library="" webserver="" <span="" style="font-family: Consolas, 'Courier New', Courier, mono, serif;">CGI-Executables<span style="font-family: Consolas, 'Courier New', Courier, mono, serif;">"></span><br>    AllowOverride None<br>    Options None<br>    Require all granted<br>    </directory><br>Directory 后面的字符串是你规定的地址，我的是和基地址保持一致的：<br>    <directory "="" library="" webserver="" documents"=""><br>    AllowOverride None<br>    Options +ExecCGI<br>    Order allow,deny<br>    Allow from all<br>    </directory>    </p>
-<h3 id="设置服务器找寻的位置"><a href="#设置服务器找寻的位置" class="headerlink" title="设置服务器找寻的位置"></a>设置服务器找寻的位置</h3><p> 查找  <em>ScriptAlias</em> ，设置你自己规定的位置，我的是：<br>    ScriptAlias /Documents/ /Library/WebServer/Documents/</p>
+<h3 id="设置你程序工作的目录位置，并放开权限"><a href="#设置你程序工作的目录位置，并放开权限" class="headerlink" title="设置你程序工作的目录位置，并放开权限"></a>设置你程序工作的目录位置，并放开权限</h3><p>找到</p>
+<pre><code>&lt;Directory &quot;/Library/WebServer/&lt;span style=&quot;font-family: Consolas, &apos;Courier New&apos;, Courier, mono, serif;&quot;&gt;CGI-Executables&lt;/span&gt;&lt;span style=&quot;font-family: Consolas, &apos;Courier New&apos;, Courier, mono, serif;&quot;&gt;&quot;&gt;&lt;/span&gt;  
+    AllowOverride None  
+    Options None  
+    Require all granted  
+&lt;/Directory&gt; 
+</code></pre><p>Directory 后面的字符串是你规定的地址，我的是和基地址保持一致的：</p>
+<pre><code>&lt;Directory &quot;/Library/WebServer/Documents&quot;&gt;
+    AllowOverride None
+    Options +ExecCGI
+    Order allow,deny
+    Allow from all
+&lt;/Directory&gt;    
+</code></pre><h3 id="设置服务器找寻的位置"><a href="#设置服务器找寻的位置" class="headerlink" title="设置服务器找寻的位置"></a>设置服务器找寻的位置</h3><p> 查找  <em>ScriptAlias</em> ，设置你自己规定的位置，我的是：<br>    ScriptAlias /Documents/ /Library/WebServer/Documents/</p>
 <h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><ul>
 <li>以上内容若查找到为注释内容，请放心删掉注释标识  </li>
 <li>Mac上修改配置文件可能需要权限，你可以了解下如何<a href="https://zhidao.baidu.com/question/1239666157073787499.html" target="_blank" rel="external">放开权限</a></li>
@@ -107,7 +119,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/22/Mac上配置apache支持运行解析python文件/" data-id="cj7v98k9a0000c87rtfdrtmye" class="article-share-link">Share</a>
+      <a data-url="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/22/Mac上配置apache支持运行解析python文件/" data-id="cj7v9fnez0001f07re9s5ev7m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,11 +176,11 @@
           </li>
         
           <li>
-            <a href="/2017/09/07/Hexo/">Hexo</a>
+            <a href="/2017/09/07/CentOs下相关命令记录/">CentOs下相关指令记录</a>
           </li>
         
           <li>
-            <a href="/2017/09/07/CentOs下相关命令记录/">CentOs下相关指令记录</a>
+            <a href="/2017/09/07/Hexo/">Hexo</a>
           </li>
         
       </ul>
