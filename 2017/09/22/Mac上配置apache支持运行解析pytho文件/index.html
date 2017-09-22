@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mac上配置apache支持运行解析pytho文件 | 沁心小筑</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简介 Mac上配置本地服务器解析运行python文件其实比较方便，因为Mac本身就自带了apache来支持启动本地服务器。我们需要修改下apache的配置文件，大致有以下几个逻辑：  加入apache识别的.py文件类型 规定服务器寻找程序文件的地址 放开识别请求的权限   配置文件位置你可以在finder应用下前往文件位置 :    /etc/apache2找到httpd.conf即是我们要找的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac上配置apache支持运行解析pytho文件">
+<meta property="og:url" content="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/22/Mac上配置apache支持运行解析pytho文件/index.html">
+<meta property="og:site_name" content="沁心小筑">
+<meta property="og:description" content="简介 Mac上配置本地服务器解析运行python文件其实比较方便，因为Mac本身就自带了apache来支持启动本地服务器。我们需要修改下apache的配置文件，大致有以下几个逻辑：  加入apache识别的.py文件类型 规定服务器寻找程序文件的地址 放开识别请求的权限   配置文件位置你可以在finder应用下前往文件位置 :    /etc/apache2找到httpd.conf即是我们要找的">
+<meta property="og:updated_time" content="2017-09-22T02:10:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac上配置apache支持运行解析pytho文件">
+<meta name="twitter:description" content="简介 Mac上配置本地服务器解析运行python文件其实比较方便，因为Mac本身就自带了apache来支持启动本地服务器。我们需要修改下apache的配置文件，大致有以下几个逻辑：  加入apache识别的.py文件类型 规定服务器寻找程序文件的地址 放开识别请求的权限   配置文件位置你可以在finder应用下前往文件位置 :    /etc/apache2找到httpd.conf即是我们要找的">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <!--头部内容模板-->
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">沁心小筑</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">列表</a>
+        
+       
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="https://github.com/Johnharvy" title="github"></a>
+        
+        <a id="1" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/Johnharvy/Johnharvy.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Mac上配置apache支持运行解析pytho文件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/Mac上配置apache支持运行解析pytho文件/" class="article-date">
+  <time datetime="2017-09-22T01:26:51.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mac上配置apache支持运行解析pytho文件
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>Mac上配置本地服务器解析运行python文件其实比较方便，因为Mac本身就自带了apache来支持启动本地服务器。我们需要修改下apache的配置文件，大致有以下几个逻辑：</p>
+<ul>
+<li>加入apache识别的.py文件类型</li>
+<li>规定服务器寻找程序文件的地址</li>
+<li>放开识别请求的权限</li>
+</ul>
+</blockquote>
+<h3 id="配置文件位置"><a href="#配置文件位置" class="headerlink" title="配置文件位置"></a>配置文件位置</h3><p>你可以在finder应用下前往文件位置 :<br>    /etc/apache2<br>找到httpd.conf即是我们要找的配置文件</p>
+<h3 id="检查文件里规定的基地址"><a href="#检查文件里规定的基地址" class="headerlink" title="检查文件里规定的基地址"></a>检查文件里规定的基地址</h3><p>查找<em>DocumentRoot</em>，其后面的地址字符串就是该服务器规定默认的基地址，你在该文件下的文件都可以通过 localhost/文件名.类型访问到，细心的你会发现如果此时打开.py文件不能运行，只会展现内容。</p>
+<h3 id="识别-py文件"><a href="#识别-py文件" class="headerlink" title="识别.py文件"></a>识别.py文件</h3><p>查找 <em>AddHandler</em>，在其后面加入 .pl .py .sh</p>
+<h3 id="设置你程序工作的目录位置，并放开权限"><a href="#设置你程序工作的目录位置，并放开权限" class="headerlink" title="设置你程序工作的目录位置，并放开权限"></a>设置你程序工作的目录位置，并放开权限</h3><p>找到<br>    <directory "="" library="" webserver="" <span="" style="font-family: Consolas, 'Courier New', Courier, mono, serif;">CGI-Executables<span style="font-family: Consolas, 'Courier New', Courier, mono, serif;">"></span><br>    AllowOverride None<br>    Options None<br>    Require all granted<br>    </directory><br>Directory 后面的字符串是你规定的地址，我的是和基地址保持一致的：<br>    <directory "="" library="" webserver="" documents"=""><br>    AllowOverride None<br>    Options +ExecCGI<br>    Order allow,deny<br>    Allow from all<br>    </directory>    </p>
+<h3 id="设置服务器找寻的位置"><a href="#设置服务器找寻的位置" class="headerlink" title="设置服务器找寻的位置"></a>设置服务器找寻的位置</h3><p> 查找  <em>ScriptAlias</em> ，设置你自己规定的位置，我的是：<br>    ScriptAlias /Documents/ /Library/WebServer/Documents/</p>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><ul>
+<li>以上内容若查找到为注释内容，请放心删掉注释标识  </li>
+<li>Mac上修改配置文件可能需要权限，你可以了解下如何<a href="https://zhidao.baidu.com/question/1239666157073787499.html" target="_blank" rel="external">放开权限</a></li>
+<li>修改完或者刚开始调试服务器不响应，你可以重启apache服务：<br>sudo /usr/sbin/apachectl restart</li>
+<li>访问地址 ： localhost/XX.xx </li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/22/Mac上配置apache支持运行解析pytho文件/" data-id="cj7v91pp20000737rswarjm4z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/07/cookie-js/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">cookie.js</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/22/Mac上配置apache支持运行解析pytho文件/">Mac上配置apache支持运行解析pytho文件</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/07/cookie-js/">cookie.js</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/07/CentOs下相关命令记录/">CentOs下相关指令记录</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/07/Hexo/">Hexo</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Johnharvy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">列表</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
