@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JS的逻辑判断值 | 沁心小筑</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="导语我们经常在做逻辑判定时会根据判定值的布尔类型来区分操作，即如果是··则··，不然则··的逻辑语境，但由于Js的弱类型特性，它可以利用不同类型的值来替代布尔值。如： if(!false){},  if(!&amp;quot;&amp;quot;){}, if(!undefined){}, if(!null){}, if(!0){}  效果相同。但是，这里面又有哪些陷阱呢？ 这些值是否都相等这些值中 0 == f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS的逻辑判断值">
+<meta property="og:url" content="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/29/JS的逻辑判断值/index.html">
+<meta property="og:site_name" content="沁心小筑">
+<meta property="og:description" content="导语我们经常在做逻辑判定时会根据判定值的布尔类型来区分操作，即如果是··则··，不然则··的逻辑语境，但由于Js的弱类型特性，它可以利用不同类型的值来替代布尔值。如： if(!false){},  if(!&amp;quot;&amp;quot;){}, if(!undefined){}, if(!null){}, if(!0){}  效果相同。但是，这里面又有哪些陷阱呢？ 这些值是否都相等这些值中 0 == f">
+<meta property="og:updated_time" content="2017-09-29T12:39:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS的逻辑判断值">
+<meta name="twitter:description" content="导语我们经常在做逻辑判定时会根据判定值的布尔类型来区分操作，即如果是··则··，不然则··的逻辑语境，但由于Js的弱类型特性，它可以利用不同类型的值来替代布尔值。如： if(!false){},  if(!&amp;quot;&amp;quot;){}, if(!undefined){}, if(!null){}, if(!0){}  效果相同。但是，这里面又有哪些陷阱呢？ 这些值是否都相等这些值中 0 == f">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <!--头部内容模板-->
+<header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">沁心小筑</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">列表</a>
+        
+       
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="https://github.com/Johnharvy" title="github"></a>
+        
+        <a id="1" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://github.com/Johnharvy/Johnharvy.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JS的逻辑判断值" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/29/JS的逻辑判断值/" class="article-date">
+  <time datetime="2017-09-29T11:35:50.000Z" itemprop="datePublished">2017-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS的逻辑判断值
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h4><p>我们经常在做逻辑判定时会根据判定值的布尔类型来区分操作，即如果是··则··，不然则··的逻辑语境，但由于Js的弱类型特性，它可以利用不同类型的值来替代布尔值。如：</p>
+<pre><code>if(!false){}, 
+if(!&quot;&quot;){},
+if(!undefined){},
+if(!null){},
+if(!0){}
+</code></pre><p> 效果相同。<br>但是，这里面又有哪些陷阱呢？</p>
+<h3 id="这些值是否都相等"><a href="#这些值是否都相等" class="headerlink" title="这些值是否都相等"></a>这些值是否都相等</h3><p>这些值中</p>
+<pre><code>0 == false    //true
+&quot;&quot; == false   //true
+&quot;&quot; == 0       //true
+
+false == undefined   //false
+false == null        //false
+null == undefined    //true
+</code></pre><p>从上面我们可以看出，虽然 0／false／“”／null/undefined 可以充当相同的布尔角色，但是它们却不能在值上相等。只有 0,false,””值相等,undefined与null值相等，其他不相等。</p>
+<h3 id="为什么会这样？"><a href="#为什么会这样？" class="headerlink" title="为什么会这样？"></a>为什么会这样？</h3><p>这里在JS运行时的认定机制我也不是特别清楚，我大概知道Js在这里做了一些不严谨的类型转换，所有的值都会被转换为两个值 ： false 与true，再执行代码。</p>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>由于if语句经常用到，这几种情况还是记下来比较好。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/Johnharvy/Johnharvy.github.io/2017/09/29/JS的逻辑判断值/" data-id="cj85vky2000008mfy3x590m25" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/22/Mac上配置apache支持运行解析python文件/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Mac上配置apache支持运行解析python文件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/29/JS的逻辑判断值/">JS的逻辑判断值</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/22/Mac上配置apache支持运行解析python文件/">Mac上配置apache支持运行解析python文件</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/07/cookie-js/">cookie.js</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/07/CentOs下相关命令记录/">CentOs下相关指令记录</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/07/Hexo/">Hexo</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Johnharvy<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">列表</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
